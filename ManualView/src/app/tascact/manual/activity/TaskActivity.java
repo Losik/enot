@@ -19,11 +19,8 @@ import app.tascact.manual.view.TaskControlView;
 import app.tascact.manual.view.TaskView;
 
 public class TaskActivity extends Activity {
-	// View ������������������ ������������������
 	private LinearLayout mMainLayout = null;
-	// View �������������� ����������������
 	private TaskView mTaskView = null;
-	// View ���������������� ��������������������
 	private TaskControlView mTaskControl = null;
 
 	@Override
