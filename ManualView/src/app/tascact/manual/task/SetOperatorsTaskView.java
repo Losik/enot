@@ -103,9 +103,9 @@ public class SetOperatorsTaskView extends TaskView
 			DELtask = 1;
 			LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			ImageView first = new ImageView(context);
-			first.setBackgroundResource(R.drawable.manual_1_2_pg62_3_task_1);
+			//first.setBackgroundResource(R.drawable.manual_1_2_pg62_3_task_1);
 			ImageView second = new ImageView(context);
-			second.setBackgroundResource(R.drawable.manual_1_2_pg62_3_task_2);
+			//second.setBackgroundResource(R.drawable.manual_1_2_pg62_3_task_2);
 			params.setMargins(250, 200, 0, 0);
 			mMainLayout.addView(first, params);
 			params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);

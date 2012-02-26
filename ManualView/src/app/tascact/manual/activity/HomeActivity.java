@@ -71,7 +71,7 @@ public class HomeActivity extends Activity
    		@Override
    		public void onClick(View v)
    		{
-			Intent intent = new Intent(v.getContext(), ManualActivity.class);
+			Intent intent = new Intent(v.getContext(), PageReaderActivity.class);
 			intent.putExtra("bookName", "book1");
    			startActivity(intent);
    		}

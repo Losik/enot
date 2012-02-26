@@ -1,14 +1,3 @@
-/*
- * ManualActivity ����������
- * 
- * ������������ ���������������� ����������������
- * 
- * Copyright 2012 hexonxons
- * 
- * :mailto killgamesh666@gmail.com
- * 
- */
-
 package app.tascact.manual.activity;
 
 import android.app.Activity;
@@ -19,18 +8,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import app.tascact.manual.XMLResources;
 import app.tascact.manual.view.ManualControlView;
-import app.tascact.manual.view.ManualView;
+import app.tascact.manual.view.PageReaderView;
 
-public class ManualActivity extends Activity
-{
+public class PageReaderActivity extends Activity {
 	private LinearLayout mMainLayout;
-	private ManualView mManualView;
+	private PageReaderView mManualView;
 	private ManualControlView mControl;
 	private int pageToDisplay;
 	private XMLResources markup;
@@ -55,8 +42,9 @@ public class ManualActivity extends Activity
 		loadPreferences();
 
 		mMainLayout = new LinearLayout(this);
-		mManualView = new ManualView(this, markup, mClickListener);
-		mManualView.setPage(pageToDisplay);
+		mManualView = new PageReaderView(this, markup);
+		// TODO hardcode
+		mManualView.setPage(4);
 		//mManualView.setOnClickListener(mClickListener);
 		mControl = new ManualControlView(this);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -131,24 +119,6 @@ public class ManualActivity extends Activity
 		}
 	}
 	
-	private OnClickListener mClickListener = new OnClickListener() 
-	{
-		@Override
-		public void onClick(View v)
-		{
-			// Indexes are 1-based
-			if(markup.getTaskType(pageToDisplay, v.getId()+1) != null)
-   			{
-   				Intent intent = new Intent(v.getContext(), TaskActivity.class);
-   				intent.putExtra("ManualName", mManualName);
-	   			intent.putExtra("PageNumber", pageToDisplay);
-	   			intent.putExtra("TaskNumber", v.getId() + 1);
-	   			intent.putExtra("TaskType", markup.getTaskType(pageToDisplay, v.getId()+1));
-	   			startActivity(intent);
-   			}
-		}
-	};
-
 	@Override
     protected void onStop()
 	{
