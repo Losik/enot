@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import app.tascact.manual.R;
-import app.tascact.manual.XMLResources;
+import app.tascact.manual.Markup;
 import app.tascact.manual.task.CompleteTableTaskView;
 import app.tascact.manual.task.ConnectElementsSequenceTaskView;
 import app.tascact.manual.task.ConnectElementsTaskView;
@@ -29,9 +29,9 @@ public class TaskActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Bundle extras = getIntent().getExtras();
-		XMLResources markup;
+		Markup markup;
 		try {
-			markup = new XMLResources(this, extras.getString("ManualName"));
+			markup = new Markup(this, extras.getString("ManualName"));
 
 			if (extras != null) {
 				mMainLayout = new LinearLayout(this);

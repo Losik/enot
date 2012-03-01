@@ -23,7 +23,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import app.tascact.manual.XMLResources;
+import app.tascact.manual.Markup;
 import app.tascact.manual.view.ManualControlView;
 import app.tascact.manual.view.ManualView;
 
@@ -33,7 +33,7 @@ public class ManualActivity extends Activity
 	private ManualView mManualView;
 	private ManualControlView mControl;
 	private int pageToDisplay;
-	private XMLResources markup;
+	private Markup markup;
 	private long mPrevTouchTime;
 	private String mManualName;
 	
@@ -46,7 +46,7 @@ public class ManualActivity extends Activity
 		Bundle extras = getIntent().getExtras();
 		mManualName = extras.getString("bookName");
 		try {
-			markup = new XMLResources(this, mManualName);
+			markup = new Markup(this, mManualName);
 		} catch (Throwable e) {
 			Log.e("XML", e.getMessage());
 			finish();

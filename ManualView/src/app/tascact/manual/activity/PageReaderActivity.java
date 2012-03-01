@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import app.tascact.manual.XMLResources;
+import app.tascact.manual.Markup;
 import app.tascact.manual.view.ManualControlView;
 import app.tascact.manual.view.PageReaderView;
 
@@ -20,7 +20,7 @@ public class PageReaderActivity extends Activity {
 	private PageReaderView reader;
 	private ManualControlView controlPanel;
 	private int pageToDisplay;
-	private XMLResources markup;
+	private Markup markup;
 	private long mPrevTouchTime;
 	private String mManualName;
 	
@@ -31,12 +31,13 @@ public class PageReaderActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 		mManualName = extras.getString("bookName");
 		try {
-			markup = new XMLResources(this, mManualName);
+			markup = new Markup(this, mManualName);
 		} catch (Throwable e) {
 			// Stopping activity on failure.
 			// No markup - no pages to read.
 			Log.e("XML", "While creating Page Reader", e);
 			finish();
+			// return;
 		}
 
 		loadPreferences();
@@ -47,8 +48,8 @@ public class PageReaderActivity extends Activity {
 
 		// Setting up page reader.
 		reader = new PageReaderView(this, markup, pageToDisplay);
-		mainLayout.addView(reader, new LayoutParams(LayoutParams.MATCH_PARENT, 1040));
-
+		mainLayout.addView(reader, new LayoutParams(LayoutParams.MATCH_PARENT, 0, 1));
+		
 		// Setting up control panel.
 		controlPanel = new ManualControlView(this);		
 		

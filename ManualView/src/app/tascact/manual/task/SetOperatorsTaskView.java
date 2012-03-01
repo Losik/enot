@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import app.tascact.manual.R;
-import app.tascact.manual.XMLResources;
+import app.tascact.manual.Markup;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -33,7 +33,7 @@ import app.tascact.manual.view.TaskView;
 
 public class SetOperatorsTaskView extends TaskView
 {
-	private XMLResources mResources = null;
+	private Markup mResources = null;
 	private String[] mTaskResources = null;
 	private String[] mTaskAnswers = null;
 	private RelativeLayout mMainLayout = null;
@@ -46,7 +46,7 @@ public class SetOperatorsTaskView extends TaskView
 	private long mPrevTouchTime = 0;
 	
 	private int DELtask = 0;
-	public SetOperatorsTaskView(Context context, XMLResources markup, String ManualName,  int PageNumber, int TaskNumber)
+	public SetOperatorsTaskView(Context context, Markup markup, String ManualName,  int PageNumber, int TaskNumber)
 	{
 		super(context);
 		mResources = markup;

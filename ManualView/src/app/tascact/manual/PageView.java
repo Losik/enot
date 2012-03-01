@@ -2,6 +2,7 @@ package app.tascact.manual;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,30 +17,36 @@ public class PageView extends LinearLayout {
 	 * @param markup document's markup to display.
 	 * @param pageNumber 1-based index.
 	 */
-	public PageView(Context context, XMLResources markup, int pageNumber) {
+	public PageView(Context context, Markup markup, int pageNumber) {
 		super(context);
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		setClickable(true);
 		setOrientation(VERTICAL);
 		
+		setBackgroundColor(Color.BLUE);
+		
 		this.markup = markup;
 		this.pageNumber = pageNumber;
 		pageResources = markup.getPageResources(pageNumber); 
-		
+
 		for(int i = 0; i < pageResources.length; ++i) {
 			ImageView pageElem = new ImageView(this.getContext());
 			// Tasks are enumerated 1-based 
 			pageElem.setId(i + 1);
 			pageElem.setBackgroundResource(pageResources[i]);
 			pageElem.setOnClickListener(taskLauncher);
-			this.addView(pageElem);
+			
+
+			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+			
+			this.addView(pageElem, params);
 		}
 	}	
 	
 	private int pageNumber;
 	private int[] pageResources;
-	private XMLResources markup;
+	private Markup markup;
 	private OnClickListener taskLauncher = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
